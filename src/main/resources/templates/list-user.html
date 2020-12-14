@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap Template</title>
+
+    <!-- Bootstrap -->
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <img src="/img/maxresdefault.jpg" alt="" class="img-fluid">
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="d-none d-sm-none d-xl-table-cell">Id</th>
+                <th>Avatar</th>
+                <th>Nombre</th>
+                <th class="d-none d-sm-table-cell">Apellidos</th>
+                <th>Nombre de usuario</th>
+                <th class="d-none d-sm-none d-md-table-cell">E-mail</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${listUsers}">
+                <td th:text="${user.id}" class="d-none d-sm-none d-xl-table-cell"></td>
+                <td><img src="" alt="" th:src="@{${user.imagen}?:'/img/default.jpeg'}" th:width="65px"></td>
+                <td th:text="${user.nombre}"></td>
+                <td th:text="${user.apellidos}" class="d-none d-sm-table-cell"></td>
+                <td th:text="${user.nombreUsuario}"></td>
+                <td th:text="${user.email}" class="d-none d-sm-none d-md-table-cell"></td>
+                <td><a href="#" th:href="@{/user/edit/{id}(id=${user.id})}">Editar</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/webjars/jquery/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

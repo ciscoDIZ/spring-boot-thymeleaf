@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap Template</title>
+
+    <!-- Bootstrap -->
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+
+        <img src="/img/maxresdefault.jpg" alt="" class="img-fluid">
+    </div>
+    <form action="#"
+          class="form-horizontal"
+          method="post"
+          enctype="multipart/form-data"
+          th:action="${userForm.id != 0}?@{/user/edit/submit}:@{/user/new/submit}"
+          th:object="${userForm}">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Registro</legend>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="id">Id:</label>
+                <div class="col-md-4">
+                    <input id="id"
+                           name="id"
+                           type="text"
+                           placeholder="Id..."
+                           class="form-control input-md"
+                           required=""
+                           th:field="*{id}" th:classappend="${#fields.hasErrors('id')} ? 'is-invalid'">
+                    <span class="help-block">La identificación </span>
+                    <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}" class="help-block" id="id-error"></span>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="nombre">Nombre:</label>
+                <div class="col-md-4">
+                    <input id="nombre"
+                           name="nombre"
+                           type="text"
+                           placeholder="Nombre..."
+                           class="form-control input-md"
+                           required=""
+                           th:field="*{nombre}">
+                    <span class="help-block">Su nombre </span>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="apellidos">Apellidos:</label>
+                <div class="col-md-4">
+                    <input id="apellidos"
+                           name="apellidos"
+                           type="text"
+                           placeholder="Apellidos.."
+                           class="form-control input-md"
+                           required=""
+                           th:field="*{apellidos}">
+                    <span class="help-block">Sus apellidos</span>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="email">E-mail:</label>
+                <div class="col-md-4">
+                    <input id="email"
+                           name="email"
+                           type="text"
+                           placeholder="E-mail..."
+                           class="form-control input-md"
+                           required=""
+                           th:field="*{email}">
+                    <span class="help-block">E-Mail</span>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="usuario">Nombre de usuario:</label>
+                <div class="col-md-4">
+                    <input id="usuario"
+                           name="usuario"
+                           type="text"
+                           placeholder="Nombre de usuario..."
+                           class="form-control input-md"
+                           required="" th:field="*{nombreUsuario}">
+                    <span class="help-block">El nombre por el que se le conocerá en la web</span>
+                </div>
+            </div>
+
+            <!-- Password input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="passwd">Contraseña:</label>
+                <div class="col-md-4">
+                    <input id="passwd"
+                           name="passwd"
+                           type="password"
+                           placeholder="Contraseña..."
+                           class="form-control input-md"
+                           required=""
+                           th:field="*{passwd}">
+                    <span class="help-block">Su contraseña debe tener al menos 8 carácteres.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="foto">Foto:</label>
+                <div class="col-md-4">
+                    <input id="foto"
+                           name="file"
+                           type="file"
+                           class="form-control-file
+                           input-file input-md">
+                    <span class="help-block">Su foto</span>
+                </div>
+            </div>
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="enviar">Enviar</label>
+                <div class="col-md-4">
+                    <button id="enviar" name="enviar" class="btn btn-primary">enviar</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/webjars/jquery/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

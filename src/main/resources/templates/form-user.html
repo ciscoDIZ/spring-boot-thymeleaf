@@ -60,12 +60,6 @@
                                 </li>
                             </ul>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                        <label for="buscar" id="lblBuscar">Buscar:</label>
-                        <input id="buscar" class="form-control mr-sm-2" type="search" placeholder="Buscar"
-                               aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                    </form>
                 </div>
             </nav>
             <form action="#" th:action="@{/logout}" method="post" id="logout-form"></form>
@@ -83,7 +77,7 @@
             <!-- Form Name -->
             <legend>Registro</legend>
 
-            <div class="form-group">
+            <!--<div class="form-group">
                 <label class="col-md-4 control-label" for="id">Id:</label>
                 <div class="col-md-4">
                     <input id="id"
@@ -96,8 +90,10 @@
                     <span class="help-block">La identificación </span>
                     <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}" class="help-block" id="id-error"></span>
                 </div>
-            </div>
-
+            </div>-->
+            <input name="id"
+                   type="hidden"
+                   th:value="*{id}">
             <!-- Text input-->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="nombre">Nombre:</label>

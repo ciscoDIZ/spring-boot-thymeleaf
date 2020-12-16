@@ -56,9 +56,9 @@ public class FileSystemStorageService implements StorageService {
                                 + filename);
             }
             try (InputStream inputStream = file.getInputStream()) {
-                Files.copy(inputStream, this.rootLocation.resolve(filename),
+                Files.copy(inputStream, this.rootLocation.resolve(storedFilename),
                         StandardCopyOption.REPLACE_EXISTING);
-                return filename;
+                return storedFilename;
             }
         }
         catch (IOException e) {

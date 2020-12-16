@@ -2,24 +2,44 @@ package net.openwebinars.proyectothymeleaf.model;
 
 import org.springframework.context.annotation.Bean;
 
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 
 import java.util.Objects;
-
+@Entity
+@Table(name = "usuarios")
 public class User {
-    @Min(value=0,message = "{user.id.mayorquecero}")
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_usuario", nullable = false)
     private long id;
     @NotEmpty
+    @Column(name = "nombre", nullable = false)
     private String nombre;
+    @Column(name = "apellidos")
     private String apellidos;
     @Email
+    @Column(name = "email")
     private String email;
+    @Column(name = "nombre_usuario")
     private String nombreUsuario;
+    @Column(name = "passwd")
     private String passwd;
+    @Column(name = "image")
     private String imagen;
     public User() {}
+
+
+    public User(@NotEmpty String nombre, String apellidos, @Email String email, String nombreUsuario, String passwd, String imagen) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.email = email;
+        this.nombreUsuario = nombreUsuario;
+        this.passwd = passwd;
+        this.imagen = imagen;
+    }
 
     public User(@Min(value = 0, message = "{user.id.mayorquecero}") long id,
                 @NotEmpty String nombre,

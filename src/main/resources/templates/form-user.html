@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,10 +20,58 @@
 </head>
 <body>
 <div class="container">
-    <div class="jumbotron">
+    <header class="row primary">
+        <div class="jumbotron">
+            <h1>Hola <span th:text="${#authentication.name}"></span> <span th:text="${apellido}"></span></h1>
+            <img src="/img/maxresdefault.jpg" alt="" class="img-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light  secondary">
+                <a class="navbar-brand" href="/index">Mi empresa</a>
+                <button class="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/index">Home</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/user/new">Registro <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/list">Lista usuarios</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle"
+                               data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">
+                                <span th:text="${#authentication.name}">Menú</span> <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="javascript:document.getElementById('logout-form').submit()">Salir</a>
+                                </li>
+                            </ul>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <label for="buscar" id="lblBuscar">Buscar:</label>
+                        <input id="buscar" class="form-control mr-sm-2" type="search" placeholder="Buscar"
+                               aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                    </form>
+                </div>
+            </nav>
+            <form action="#" th:action="@{/logout}" method="post" id="logout-form"></form>
+        </div>
 
-        <img src="/img/maxresdefault.jpg" alt="" class="img-fluid">
-    </div>
+    </header>
     <form action="#"
           class="form-horizontal"
           method="post"
@@ -140,7 +189,6 @@
                     <button id="enviar" name="enviar" class="btn btn-primary">enviar</button>
                 </div>
             </div>
-
         </fieldset>
     </form>
 </div>

@@ -15,7 +15,7 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/")
+    @GetMapping({"/", "/index"})
     public String index(@RequestParam(name = "nombre", required = false, defaultValue = "Juapo") String nombre,
                         @RequestParam(name = "apellido", required = false, defaultValue = "Juapisimo") String apellido, Model model){
         model.addAttribute("nombre",nombre);
